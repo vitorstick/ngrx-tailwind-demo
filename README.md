@@ -2,6 +2,14 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.11.
 
+## For this project the styles are using tailwind
+
+### Tailwind because is something I don't get to work every day and wish I was better with it
+
+## State management with NgRx
+
+### I really miss my effects ...
+
 ## Development server
 
 To start a local development server, run:
