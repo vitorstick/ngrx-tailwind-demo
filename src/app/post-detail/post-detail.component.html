@@ -1,0 +1,13 @@
+<div
+  class="aspect-square w-full h-full flex items-center justify-center bg-white rounded-lg shadow-lg cursor-pointer select-none text-sm font-semibold text-center transition-all duration-500 ease-in-out overflow-hidden p-2"
+  (click)="showNextProperty()"
+  [attr.title]="displayedValue()"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="'Post detail: ' + displayedValue()"
+  aria-live="polite"
+>
+  <span class="w-full block truncate break-words line-clamp-3">
+    {{ displayedValue() }}
+  </span>
+</div>

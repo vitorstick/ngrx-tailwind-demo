@@ -1,0 +1,28 @@
+@let selectedPost = selectedPost$ | async;
+<section class="p-4" aria-label="Selected Post" role="region" tabindex="0">
+  <app-post-selected [post]="selectedPost" class="mb-6 block" />
+</section>
+<section class="p-4" aria-label="Posts Grid" role="region" tabindex="1">
+  @if (loading$ | async) {
+  <div
+    class="text-center py-8 text-lg font-semibold text-blue-600"
+    role="status"
+    aria-live="polite"
+  >
+    Loading posts...
+  </div>
+  } @else {
+  <div class="grid grid-cols-10 gap-4" role="list">
+    @for (post of posts$ | async; track post.id) {
+    <app-post-detail
+      [post]="post"
+      [selected]="selectedPost?.id === post.id"
+      class="w-full h-full"
+      (click)="onPostSelected(post)"
+      role="listitem"
+      [attr.aria-selected]="selectedPost?.id === post.id"
+    ></app-post-detail>
+    }
+  </div>
+  }
+</section>
