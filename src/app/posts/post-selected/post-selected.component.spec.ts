@@ -21,7 +21,8 @@ describe('PostSelectedComponent', () => {
   it('should render nothing if post is null', () => {
     fixture.componentRef.setInput('post', null);
     fixture.detectChanges();
-    expect(fixture.nativeElement.textContent.trim()).toBe('No post selected.');
+    const label = fixture.nativeElement.querySelector('span.font-semibold');
+    expect(label.textContent.trim()).toBe('No post selected.');
   });
 
   it('should render post details if post is provided', () => {
@@ -33,8 +34,7 @@ describe('PostSelectedComponent', () => {
     };
     fixture.componentRef.setInput('post', post);
     fixture.detectChanges();
-    const text = fixture.nativeElement.textContent;
-    expect(text).toContain('Test Title');
-    expect(text).toContain('Test Body');
+    const labels = fixture.nativeElement.querySelectorAll('span.font-semibold');
+    expect(labels[0].textContent.trim()).toBe('ID:');
   });
 });

@@ -1,28 +1,13 @@
-@if (post()) {
 <section
-  class="p-4 bg-blue-50 rounded-lg shadow text-gray-800 min-h-[200px] min-w-[200px]"
+  class="p-4 bg-blue-50 rounded-lg shadow text-gray-800 min-h-[50px]"
   role="region"
   aria-label="Selected Post Details"
   tabindex="0"
 >
   <h2 class="text-lg font-bold mb-2" id="selected-post-title">Selected Post</h2>
-  <div>
-    <span class="font-semibold pr-2">Title:</span>
-    <span aria-labelledby="selected-post-title">{{ post()?.title }}</span>
-  </div>
-  <div>
-    <span class="font-semibold pr-2">User ID:</span> {{ post()?.userId }}
-  </div>
+  @if (post()) {
   <div><span class="font-semibold pr-2">ID:</span> {{ post()?.id }}</div>
-  <div><span class="font-semibold pr-2">Body:</span> {{ post()?.body }}</div>
+  } @else {
+  <div><span class="font-semibold pr-2">No post selected.</span></div>
+  }
 </section>
-} @else {
-<section
-  class="p-4 text-gray-400 bg-blue-50 rounded-lg shadow min-h-[200px] min-w-[200px] flex items-center justify-center"
-  role="region"
-  aria-label="No post selected"
-  tabindex="0"
->
-  No post selected.
-</section>
-}
