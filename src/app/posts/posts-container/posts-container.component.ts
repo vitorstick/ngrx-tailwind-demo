@@ -13,12 +13,12 @@ import {
 } from '../state/posts.selectors';
 
 @Component({
-  selector: 'app-posts',
+  selector: 'app-posts-container',
   imports: [CommonModule, PostDetailComponent, PostSelectedComponent],
-  templateUrl: './posts.component.html',
+  templateUrl: './posts-container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PostsComponent {
+export class PostsContainerComponent {
   private store = inject(Store);
 
   posts$: Observable<Post[]> = this.store.select(selectAllPosts);

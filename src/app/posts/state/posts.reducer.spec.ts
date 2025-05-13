@@ -7,7 +7,9 @@ describe('postsReducer', () => {
   const post2: Post = { userId: 2, id: 2, title: 'Title 2', body: 'Body 2' };
 
   it('should return the initial state', () => {
-    expect(postsReducer(undefined, { type: '' } as any)).toEqual(initialState);
+    expect(
+      postsReducer(undefined, { type: '' } as unknown as { type: string })
+    ).toEqual(initialState);
   });
 
   it('should set loading true on loadPosts', () => {

@@ -11,7 +11,7 @@ const post1: Post = { userId: 1, id: 1, title: 'Title 1', body: 'Body 1' };
 const post2: Post = { userId: 2, id: 2, title: 'Title 2', body: 'Body 2' };
 
 describe('PostsEffects', () => {
-  let actions$: Observable<any>;
+  let actions$: Observable<unknown>;
   let effects: PostsEffects;
   let api: { getPosts: jest.Mock };
 
@@ -25,7 +25,7 @@ describe('PostsEffects', () => {
       ],
     });
     effects = TestBed.inject(PostsEffects);
-    api = TestBed.inject(PostApiService) as any;
+    api = TestBed.inject(PostApiService) as unknown as { getPosts: jest.Mock };
   });
 
   it('should dispatch loadPostsSuccess on successful load', () => {

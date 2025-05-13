@@ -7,21 +7,21 @@ import {
   selectPostsLoading,
   selectSelectedPost,
 } from '../state/posts.selectors';
-import { PostsComponent } from './posts.component';
+import { PostsContainerComponent } from './posts-container.component';
 
 const mockPosts: Post[] = [
   { userId: 1, id: 1, title: 'Title 1', body: 'Body 1' },
   { userId: 2, id: 2, title: 'Title 2', body: 'Body 2' },
 ];
 
-describe('PostsComponent', () => {
-  let fixture: ComponentFixture<PostsComponent>;
-  let component: PostsComponent;
+describe('PostsContainerComponent', () => {
+  let fixture: ComponentFixture<PostsContainerComponent>;
+  let component: PostsContainerComponent;
   let store: MockStore;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [PostsComponent],
+      imports: [PostsContainerComponent],
       providers: [
         provideMockStore({
           selectors: [
@@ -34,7 +34,7 @@ describe('PostsComponent', () => {
     }).compileComponents();
     store = TestBed.inject(MockStore);
     jest.spyOn(store, 'dispatch');
-    fixture = TestBed.createComponent(PostsComponent);
+    fixture = TestBed.createComponent(PostsContainerComponent);
     component = fixture.componentInstance;
   });
 

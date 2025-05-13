@@ -5,7 +5,7 @@ import { PostsActions } from './posts.actions';
 export interface PostsState {
   posts: Post[];
   loading: boolean;
-  error: any;
+  error: unknown | null;
   selectedPost: Post | null;
 }
 

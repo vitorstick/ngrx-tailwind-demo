@@ -62,7 +62,7 @@ describe('PostDetailComponent', () => {
   });
 
   it('should return empty string if no post', () => {
-    fixture.componentRef.setInput('post', undefined as any);
+    fixture.componentRef.setInput('post', undefined as unknown as Post);
     fixture.componentRef.setInput('selected', true);
     fixture.detectChanges();
     expect(component.displayedValue()).toBe('');
