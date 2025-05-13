@@ -7,12 +7,14 @@
 >
   <h2 class="text-lg font-bold mb-2" id="selected-post-title">Selected Post</h2>
   <div>
-    <span class="font-semibold">Title:</span>
+    <span class="font-semibold pr-2">Title:</span>
     <span aria-labelledby="selected-post-title">{{ post()?.title }}</span>
   </div>
-  <div><span class="font-semibold">User ID:</span> {{ post()?.userId }}</div>
-  <div><span class="font-semibold">ID:</span> {{ post()?.id }}</div>
-  <div><span class="font-semibold">Body:</span> {{ post()?.body }}</div>
+  <div>
+    <span class="font-semibold pr-2">User ID:</span> {{ post()?.userId }}
+  </div>
+  <div><span class="font-semibold pr-2">ID:</span> {{ post()?.id }}</div>
+  <div><span class="font-semibold pr-2">Body:</span> {{ post()?.body }}</div>
 </section>
 } @else {
 <section
