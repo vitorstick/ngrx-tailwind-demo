@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { Post } from '../interfaces/Post';
+import { PostProperty, PostViewModel } from '../interfaces/PostViewModel';
 import { PostsActions } from '../state/posts.actions';
 import {
   selectAllPosts,
@@ -9,9 +9,23 @@ import {
 } from '../state/posts.selectors';
 import { PostsContainerComponent } from './posts-container.component';
 
-const mockPosts: Post[] = [
-  { userId: 1, id: 1, title: 'Title 1', body: 'Body 1' },
-  { userId: 2, id: 2, title: 'Title 2', body: 'Body 2' },
+const mockPosts: PostViewModel[] = [
+  {
+    userId: 1,
+    id: 1,
+    title: 'Title 1',
+    body: 'Body 1',
+    selected: false,
+    visibleProperty: 'title',
+  },
+  {
+    userId: 2,
+    id: 2,
+    title: 'Title 2',
+    body: 'Body 2',
+    selected: false,
+    visibleProperty: 'title',
+  },
 ];
 
 describe('PostsContainerComponent', () => {
@@ -72,6 +86,15 @@ describe('PostsContainerComponent', () => {
     component.onPostSelected(post);
     expect(store.dispatch).toHaveBeenCalledWith(
       PostsActions.selectPost({ post })
+    );
+  });
+
+  it('should dispatch changeVisibleProperty when onChangeVisibleProperty is called', () => {
+    const postId = 1;
+    const visibleProperty: PostProperty = 'body';
+    component.onChangeVisibleProperty(postId, visibleProperty);
+    expect(store.dispatch).toHaveBeenCalledWith(
+      PostsActions.changeVisibleProperty({ postId, visibleProperty })
     );
   });
 });

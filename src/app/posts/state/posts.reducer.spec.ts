@@ -1,10 +1,24 @@
-import { Post } from '../interfaces/Post';
+import { PostViewModel } from '../interfaces/PostViewModel';
 import { PostsActions } from './posts.actions';
 import { initialState, postsReducer, PostsState } from './posts.reducer';
 
 describe('postsReducer', () => {
-  const post1: Post = { userId: 1, id: 1, title: 'Title 1', body: 'Body 1' };
-  const post2: Post = { userId: 2, id: 2, title: 'Title 2', body: 'Body 2' };
+  const post1: PostViewModel = {
+    userId: 1,
+    id: 1,
+    title: 'Title 1',
+    body: 'Body 1',
+    selected: false,
+    visibleProperty: 'title',
+  };
+  const post2: PostViewModel = {
+    userId: 2,
+    id: 2,
+    title: 'Title 2',
+    body: 'Body 2',
+    selected: false,
+    visibleProperty: 'title',
+  };
 
   it('should return the initial state', () => {
     expect(

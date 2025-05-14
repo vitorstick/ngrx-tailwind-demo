@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
-import { Post } from '../interfaces/Post';
+import { PostViewModel } from '../interfaces/PostViewModel';
 
 @Component({
   selector: 'app-post-selected',
@@ -7,5 +7,5 @@ import { Post } from '../interfaces/Post';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostSelectedComponent {
-  post = input.required<Post | null>();
+  post = input.required<PostViewModel | null>();
 }
