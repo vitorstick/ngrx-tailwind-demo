@@ -59,6 +59,12 @@ export interface PostsState {
 }
 ```
 
+## Other Approach
+
+### PR https://github.com/vitorstick/ngrx-tailwind-demo/pull/1/files
+
+on this the selected property is managed by the store
+
 ## Development server (standard Angular CLI)
 
 To start a local development server, run:
