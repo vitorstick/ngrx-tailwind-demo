@@ -1,11 +1,17 @@
 import {
   ChangeDetectionStrategy,
   Component,
+  EventEmitter,
+  Output,
   computed,
   input,
   signal,
 } from '@angular/core';
-import { Post } from '../interfaces/Post';
+import {
+  PostProperty,
+  PostViewModel,
+  postProperties,
+} from '../interfaces/PostViewModel';
 
 @Component({
   selector: 'app-post-detail',
@@ -13,27 +19,36 @@ import { Post } from '../interfaces/Post';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PostDetailComponent {
-  post = input.required<Post>();
-  selected = input<boolean>(false);
+  post = input.required<PostViewModel>();
 
-  private postProperties = ['title', 'userId', 'id', 'body'] as const;
+  @Output() changeVisibleProperty = new EventEmitter<{
+    postId: number;
+    visibleProperty: PostProperty;
+  }>();
+
+  private postProperties = postProperties;
   private currentIndex = signal(0);
 
   displayedValue = computed(() => {
     const post = this.post();
     if (!post) return '';
 
-    if (!this.selected()) {
-      return post['title'];
-    }
-
-    const key = this.postProperties[this.currentIndex()];
-    return post[key];
+    return post[post.visibleProperty];
   });
 
   showNextProperty() {
-    this.currentIndex.set(
-      (this.currentIndex() + 1) % this.postProperties.length
+    const post = this.post();
+    if (!post) return;
+
+    const currentPropertyIndex = this.postProperties.indexOf(
+      post.visibleProperty
     );
+    const nextIndex = (currentPropertyIndex + 1) % this.postProperties.length;
+    const nextProperty = this.postProperties[nextIndex];
+
+    this.changeVisibleProperty.emit({
+      postId: post.id,
+      visibleProperty: nextProperty,
+    });
   }
 }

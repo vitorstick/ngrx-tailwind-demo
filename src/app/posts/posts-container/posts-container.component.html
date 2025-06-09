@@ -16,9 +16,11 @@
     @for (post of posts$ | async; track post.id) {
     <app-post-detail
       [post]="post"
-      [selected]="selectedPost?.id === post.id"
       class="w-full h-full"
       (click)="onPostSelected(post)"
+      (changeVisibleProperty)="
+        onChangeVisibleProperty($event.postId, $event.visibleProperty)
+      "
       role="listitem"
       [attr.aria-selected]="selectedPost?.id === post.id"
     ></app-post-detail>
